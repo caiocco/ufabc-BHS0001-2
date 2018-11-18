@@ -61,6 +61,7 @@ sumario=tradicional
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{microtype} 			% para melhorias de justificação
 \usepackage{glossaries}			% solução de glossário
+\usepackage{nameref}			% referenciar também pelo nome
 % ---
 
 % ---
@@ -91,6 +92,11 @@ sumario=tradicional
 	\else
 	Citado #1 vezes nas páginas #2.%
 	\fi}%
+% ---
+
+% ---
+%  Configurações do pacote glossaries
+\renewcommand*{\glsclearpage}{}
 % ---
 
 % ---
@@ -202,6 +208,11 @@ sumario=tradicional
 	name={GESP},
 	description={Governo do Estado de São Paulo}
 }
+
+\newglossaryentry{light}{
+	name={Light São Paulo},
+	description={São Paulo Tramway Light and Power Company Limited}
+}
 % ---
 
 % ---
@@ -303,6 +314,8 @@ sumario=tradicional
 	%  ELEMENTOS TEXTUAIS
 	% ----------------------------------------------------------
 	\textual
+	\cleardoublepage	% forçar quebra de página (deve violar
+						% alguma norma)
 	
 	% ----------------------------------------------------------
 	% Introdução
@@ -319,9 +332,13 @@ sumario=tradicional
 	% ----------------------------------------------------------
 	\section{Elementos estruturadores do território: um histórico} \label{s1:elementos}
 	
-	A assimetria entre a infraestrutura de transporte existente ao longo do curso dos rios Pinheiros e Tietê, no contexto da Região Metropolitana de São Paulo e seus processos de urbanização e de uso e ocupação do solo, que conforme \citeonline[p.43]{monteiro2010a}, contribuiu para inserir os dois cursos d'água ``no contexto urbano das últimas quatro décadas, sendo a construção das avenidas marginais, aliada às obras de retificação e canalização, a consolidação dessa atitude''. Pretende-se aqui recuperar os principais elementos do processo histórico, de forma a permitir comparações na \autoref{s1:comparando}. Serão considerados especialmente a caráter estratégico das várzeas \cite[p.63]{franco2005a} e o ``o papel das ferrovias ao conectar pontos distantes do espaço ocupado pela metrópole'' \cite[p.63]{franco2005a}.
+	% Propósito: realizar uma pequena introdução da seção
 	
-	\citeonline[p. 73]{brocaneli2007a}:
+	A assimetria entre a infraestrutura de transporte existente ao longo do curso dos rios Pinheiros e Tietê, no contexto da \glsdesc{rmsp} e seus processos de urbanização e de uso e ocupação do solo, que conforme \citeonline[p.43]{monteiro2010a}, contribuiu para inserir os dois cursos d'água ``no contexto urbano das últimas quatro décadas, sendo a construção das avenidas marginais, aliada às obras de retificação e canalização, a consolidação dessa atitude''.
+	
+	Pretende-se aqui recuperar os principais elementos do processo histórico, de forma a permitir comparações na \autoref{s1:comparando} (\nameref{s1:comparando}). Serão considerados especialmente a caráter estratégico das várzeas \cite[p.63]{franco2005a} e o ``o papel das ferrovias ao conectar pontos distantes do espaço ocupado pela metrópole'' \cite[p.63]{franco2005a}.
+	
+	\citeonline[p. 73]{brocaneli2007a} assinala que podemos entendermos as transformações que envolveram os rios Pinheiros e Tietê como fruto da urbanização, industrialização e obras de geração de energia:
 	
 	\begin{citacao}
 		``A transformação da paisagem e da fisionomia dos rios que cruzam o estado de São Paulo está muito mais associada à instalação das cidades, das indústrias e à construção de hidroelétricas com seus respectivos grandes lagos, barragens e eclusas, do que à agricultura que constituiu paisagens nas quais os rios não sofrem grandes interferências, sendo apenas os limites de propriedades.''
@@ -329,8 +346,14 @@ sumario=tradicional
 	
 	\subsection{Rio Pinheiros} \label{s2:riopinheiros}
 	
-	Conforme \citeonline[p. 11]{franco2005a}, a transformação radical da bacia do Pinheiros inicia-se no início do século XX, devido à industrialização crescente. O principal ator responsável por ela é a São Paulo Tramway Light and Power Company Limited, de origem canadense. Entre as intervenções realizadas, estava a reversão do curso do rio e sua retificação, de maneira a permitir a drenagem das áreas inundáveis e sua urbanização, antes preterida.
+	% Propósito: descrever as intervenções que afetam o Pinheiros
 	
+	Conforme \citeonline[p. 11]{franco2005a}, a transformação radical da bacia do Pinheiros inicia-se no início do século XX, devido à industrialização crescente. O principal ator responsável por ela é a \glsdesc{light}, de origem canadense. Entre as intervenções realizadas, estava a reversão do curso do rio e sua retificação, de maneira a permitir a drenagem das áreas inundáveis e sua urbanização, antes preterida.
+	
+	Segundo \citeonline[p. 3]{nobre2000a} a região da marginal do rio Pinheiros é ``a região da cidade que mais tem atraído investimentos na promoção imobiliária de edifícios de escritório desde a década de 70'', outrossim, \citeonline[p. 152]{nobre2000a} também descreve a região da marginal do Pinheiros como sendo o ``local que tem concentrado os megaempreendimentos terciários desde a década de 70''.
+
+	Quando \citeonline[p. 153]{nobre2000a} sumariza os aspectos que levaram à instalação de grandes empreendimentos do setor terciário, ele elenca: (i) quantidade elevadas de terrenos vagos e de baixo custo na região da marginal do Pinheiros; (ii) acessibilidade devido à importância da próprio sistema de avenidas marginais do mesmo rio, bem como outras avenidas na mesma região e; proximidade com bairros residenciais de alta renda.
+
 	\subsubsection{Intervenções minoritárias} \label{s3:minoritariaspinheiros}
 	
 	\subsubsection{O papel da Cia. City} \label{s3:ciacity}
@@ -389,7 +412,7 @@ sumario=tradicional
 	
 	\subsection{Sumarizando as diferenças entre as intervenções nos dois rios} \label{s2:sumarizando}
 	
-	\citeonline[p. 53--54]{franco2005a} aponta que ``as questões sanitárias eram mais pretextos do que motivos, e a questão energética justificava plenamente as obras do Pinheiros, mas não as do Tietê'', além disso, a retificação foi realizada numa única empreitada e o projeto manteve-se coordenado pela equipe do engenheiro Billings, \cite[p. 58]{franco2005a} e encarregado pela São Paulo Tramway Light and Power Company Limited, além disso, a companhia recebeu como compensação o ``direito de desapropriação de todas as terras inundáveis inscritas no limite da maior enchente histórica da qual houvesse registro''\cite[p. 59]{franco2005a}, sendo que a Light se voltou à negociação das terras principalmente para a implantação de empreendimentos residenciais de alto padrão \cite[p. 55]{franco2005a}. No caso do outro rio, o poder público foi o responsável pela obtenção de um ``vasto estoque imobiliário na várzea do Tietê, fator que definiria sua ocupação futura pela diversidade de equipamentos, públicos ou privados, assentados sobre áreas de concessão'' \cite[p. 55]{franco2005a}.
+	\citeonline[p. 53--54]{franco2005a} aponta que ``as questões sanitárias eram mais pretextos do que motivos, e a questão energética justificava plenamente as obras do Pinheiros, mas não as do Tietê'', além disso, a retificação foi realizada numa única empreitada e o projeto manteve-se coordenado pela equipe do engenheiro Billings, \cite[p. 58]{franco2005a} e encarregado pela \glsdesc{light}, além disso, a companhia recebeu como compensação o ``direito de desapropriação de todas as terras inundáveis inscritas no limite da maior enchente histórica da qual houvesse registro''\cite[p. 59]{franco2005a}, sendo que a \gls{light} se voltou à negociação das terras principalmente para a implantação de empreendimentos residenciais de alto padrão \cite[p. 55]{franco2005a}. No caso do outro rio, o poder público foi o responsável pela obtenção de um ``vasto estoque imobiliário na várzea do Tietê, fator que definiria sua ocupação futura pela diversidade de equipamentos, públicos ou privados, assentados sobre áreas de concessão'' \cite[p. 55]{franco2005a}.
 	
 	Para \cite[p. 55]{franco2005a}, ainda que debate ligado à transformação dos dois rios tivesse caráter técnico, nos bastidores desdobrava-se o verdadeiro conflito, ligado à valorização das terras lindeiras ao traçado retificado:
 	
@@ -452,6 +475,7 @@ sumario=tradicional
 	% Referências bibliográficas
 	% ----------------------------------------------------------
 	\bibliography{fontes}
+	\addcontentsline{toc}{section}{Referências}
 	
 	% ----------------------------------------------------------
 	% Glossário
@@ -481,7 +505,7 @@ sumario=tradicional
 	% ---
 	%\cleardoublepage
 	\phantomsection
-	\addcontentsline{toc}{chapter}{\glossaryname}
+	\addcontentsline{toc}{section}{\glossaryname}
 	\glossarystyle{index}
 	% \glossarystyle{altlisthypergroup}
 	% \glossarystyle{tree}
