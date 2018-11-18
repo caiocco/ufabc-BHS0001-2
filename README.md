@@ -13,4 +13,4 @@ Detalhes da atividade
 
 A entrega do artigo completo corresponde a 40% da nota.
 
-A construção do artigo foi baseada em **Eco, U. Como se Faz uma tese em Ciências Humanas. Cap. 4 - O Plano de trabalho e a elaboração de fichas** e **GIL, A. C. Como Elaborar Projeto de Pesquisa. Como delinear uma pesquisa bibliográfica? (p. 45-69)**.# ufabc-BHS0001-2
+A construção do artigo foi baseada em **Eco, U. Como se Faz uma tese em Ciências Humanas. Cap. 4 - O Plano de trabalho e a elaboração de fichas** e **GIL, A. C. Como Elaborar Projeto de Pesquisa. Como delinear uma pesquisa bibliográfica? (p. 45-69)**.
