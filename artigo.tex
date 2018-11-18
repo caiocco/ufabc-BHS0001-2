@@ -1,0 +1,527 @@
+%% abtex2-modelo-artigo.tex, v-1.9.6 laurocesar
+%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-artigo.tex and
+%% abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+%  abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+%  ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
+%  periódica científica impressa - Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+% -- opções da classe memoir --
+article,			% indica que é um artigo acadêmico
+11pt,				% tamanho da fonte
+oneside,			% para impressão apenas no recto. Oposto a twoside
+a4paper,			% tamanho do papel. 
+% -- opções da classe abntex2 --
+%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+% -- opções do pacote babel --
+english,			% idioma adicional para hifenização
+brazil,				% o último idioma é o principal do documento
+sumario=tradicional
+]{abntex2}
+
+
+% ---
+%  PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{glossaries}			% solução de glossário
+% ---
+
+% ---
+%  Pacotes de perfumaria
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+%  Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% ---
+
+% ---
+%  Configurações do pacote backref
+%  Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	Nenhuma citação no texto.%
+	\or
+	Citado na página #2.%
+	\else
+	Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+%  Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Implantação de ligação ferroviária ao longo do curso do rio Tietê na Região Metropolitana de São Paulo: comparação com a infraestrutura existente ao longo do curso do rio Pinheiros}
+\autor{Caio César Carvalho Ortega}
+\local{São Bernardo do Campo, SP}
+\data{27/11/2018}
+% ---
+
+% ---
+%  Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+	%pagebackref=true,
+	pdftitle={\@title}, 
+	pdfauthor={\@author},
+	pdfsubject={Infraestruturas},
+	pdfcreator={LaTeX with abnTeX2},
+	pdfkeywords={mobilidade urbana}{urbanização}{ferrovia}{infraestrutura}{rios}, 
+	colorlinks=true,		% false: boxed links; true: colored links
+	linkcolor=black,        % color of internal links
+	citecolor=black,        % color of links to bibliography
+	filecolor=black,      	% color of file links
+	urlcolor=black,
+	bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+%  compila o glossário
+% ---
+\makeglossaries
+
+% \newglossaryentry{ex}{name={sample},description={an example}}
+\newglossaryentry{abl}{
+	name={ABL},
+	description={Área Bruta Locável}
+}
+
+\newglossaryentry{sabesp}{
+	name={Sabesp},
+	description={Companhia de Saneamento Básico do Estado de São Paulo}
+}
+
+\newglossaryentry{bird}{
+	name={BIRD},
+	description={Banco Internacional para Reconstrução e Desenvolvimento}
+}
+
+\newglossaryentry{cptm}{
+	name={CPTM},
+	description={Companhia Paulista de Trens Metropolitanos}
+}
+
+\newglossaryentry{cmsp}{
+	name={CMSP},
+	description={Companhia do Metropolitano de São Paulo}
+}
+
+\newglossaryentry{emtu}{
+	name={EMTU},
+	description={Empresa Metropolitana de Transportes Urbanos de São Paulo S.A}
+}
+
+\newglossaryentry{emplasa}{
+	name={Emplasa},
+	description={Empresa Paulista de Planejamento Metropolitano S/A}
+}
+
+\newglossaryentry{luos}{
+	name={LUOS},
+	description={Lei de Uso de Ocupação do Solo}
+}
+
+\newglossaryentry{mdu}{
+	name={MDU},
+	description={Média por Dia Útil}
+}
+
+\newglossaryentry{ouc}{
+	name={OUC},
+	description={Operação Urbana Consorciada}
+}
+
+\newglossaryentry{pde}{
+	name={PDE},
+	description={Plano Diretor Estratégico}
+}
+
+\newglossaryentry{rmsp}{
+	name={RMSP},
+	description={Região Metropolitana de São Paulo}
+}
+
+\newglossaryentry{ibge}{
+	name={IBGE},
+	description={Instituto Brasileiro de Geografia e Estatística}
+}
+
+\newglossaryentry{gesp}{
+	name={GESP},
+	description={Governo do Estado de São Paulo}
+}
+% ---
+
+% ---
+%  compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+%  Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+
+% --- 
+%  Espaçamentos entre linhas e parágrafos 
+% --- 
+
+%  O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+%  Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+%  Espaçamento simples
+\SingleSpacing
+
+% ----
+%  Início do documento
+% ----
+\begin{document}
+	
+	% Seleciona o idioma do documento (conforme pacotes do babel)
+	%\selectlanguage{english}
+	\selectlanguage{brazil}
+	
+	% Retira espaço extra obsoleto entre as frases.
+	\frenchspacing 
+	
+	% ----------------------------------------------------------
+	%  ELEMENTOS PRÉ-TEXTUAIS
+	% ----------------------------------------------------------
+	
+	%---
+	%
+	% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+	% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+	% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+	%
+	%---
+	% página de titulo
+	\maketitle
+	
+	% resumo em português
+	\begin{resumoumacoluna}
+		% Instruções do próprio modelo canônico:
+		% Conforme a ABNT NBR 6022:2003, o resumo é elemento obrigatório, constituído de uma sequência de frases concisas e objetivas e não de uma simples enumeração de tópicos, não ultrapassando 250 palavras, seguido, logo abaixo, das palavras representativas do conteúdo do trabalho, isto é, palavras-chave e/ou descritores, conforme a NBR 6028. (...) As palavras-chave devem figurar logo abaixo do resumo, antecedidas da expressão Palavras-chave:, separadas entre si por	ponto e finalizadas também por ponto.
+
+		Este artigo tem por objetivo realizar a comparação dos processos de modificação dos rios Pinheiros e Tietê, com vistas à comparação da infraestrutura de transporte sobre trilhos, se propondo a responder se faria sentido implantar uma linha ferroviária ao longo do curso do rio Tietê, de maneira análoga àquela que existe ao longo do curso do rio Pinheiros, fruto da herança da extinta Estrada de Ferro Sorocabana. As bases da comparação objetivada estão calcadas na revisão bibliográfica de teses, bem como dados do poder público correspondentes ao volume de tráfego rodoviário e passageiros no sistema de transporte sobre trilhos.
+	
+		Destaca-se a assimetria nos processos de retificação dos rios, devido à maior participação da iniciativa privada no caso do rio Pinheiros, bem como a assimetria no próprio uso e ocupação do solo, com grandes empreendimentos imobiliários voltados ao nicho empresarial despontando ao longo do rio Pinheiros.
+		
+		\vspace{\onelineskip}
+		
+		\noindent
+		\textbf{Palavras-chave}: mobilidade urbana, urbanização, ferrovia, infraestrutura, rios.
+	\end{resumoumacoluna}
+	
+	% ---
+	% Título e resumo em língua estrangeira
+	% ---
+	
+	% titulo em inglês
+	\titulo{Implementation of a rail link along the course of the Tietê River in the Metropolitan Region of São Paulo: comparison with the existing infrastructure along the course of the Pinheiros River}
+	\emptythanks
+	\maketitle
+	
+	% resumo em português
+	\renewcommand{\resumoname}{Abstract}
+	\begin{resumoumacoluna}
+		\begin{otherlanguage*}{english}
+			The purpose of this article is to compare the modifying process of the Pinheiros and Tietê rivers, with a look at comparing the mass rail infrastructure, proposing to answer if would make sense to deploy a railway line along the course of the Tietê river, analogous to that one that exists along the course of the Pinheiros river, fruit of the inheritance of the extinct Estrada de Ferro Sorocabana. The bases of the comparison are a bibliographic review of theses, as well as public data from the authorities regarding road and mass rail system passenger traffic volume.
+			
+			Asymmetry in river rectification processes is highlighted, due to the greater participation of the private sector in the Pinheiros river case, as well as the asymmetry in the land use and occupation, with large real estate ventures aimed at the business niche emerging along the Pinheiros river.
+			
+			\vspace{\onelineskip}
+			
+			\noindent
+			\textbf{Keywords}: urban mobility, urbanization, railway, infrastructure, rivers.
+		\end{otherlanguage*}
+	\end{resumoumacoluna}
+	
+	% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
+	% ---
+	
+	% ----------------------------------------------------------
+	%  ELEMENTOS TEXTUAIS
+	% ----------------------------------------------------------
+	\textual
+	
+	% ----------------------------------------------------------
+	% Introdução
+	% ----------------------------------------------------------
+	\section*{Introdução}
+	\addcontentsline{toc}{section}{Introdução}
+	
+	Preciso verificar se é ou não obrigatório.
+	
+	\lipsum[3]
+	
+	% ----------------------------------------------------------
+	% Seções do artigo
+	% ----------------------------------------------------------
+	\section{Elementos estruturadores do território: um histórico} \label{s1:elementos}
+	
+	A assimetria entre a infraestrutura de transporte existente ao longo do curso dos rios Pinheiros e Tietê, no contexto da Região Metropolitana de São Paulo e seus processos de urbanização e de uso e ocupação do solo, que conforme \citeonline[p.43]{monteiro2010a}, contribuiu para inserir os dois cursos d'água ``no contexto urbano das últimas quatro décadas, sendo a construção das avenidas marginais, aliada às obras de retificação e canalização, a consolidação dessa atitude''. Pretende-se aqui recuperar os principais elementos do processo histórico, de forma a permitir comparações na \autoref{s1:comparando}. Serão considerados especialmente a caráter estratégico das várzeas \cite[p.63]{franco2005a} e o ``o papel das ferrovias ao conectar pontos distantes do espaço ocupado pela metrópole'' \cite[p.63]{franco2005a}.
+	
+	\citeonline[p. 73]{brocaneli2007a}:
+	
+	\begin{citacao}
+		``A transformação da paisagem e da fisionomia dos rios que cruzam o estado de São Paulo está muito mais associada à instalação das cidades, das indústrias e à construção de hidroelétricas com seus respectivos grandes lagos, barragens e eclusas, do que à agricultura que constituiu paisagens nas quais os rios não sofrem grandes interferências, sendo apenas os limites de propriedades.''
+	\end{citacao}
+	
+	\subsection{Rio Pinheiros} \label{s2:riopinheiros}
+	
+	Conforme \citeonline[p. 11]{franco2005a}, a transformação radical da bacia do Pinheiros inicia-se no início do século XX, devido à industrialização crescente. O principal ator responsável por ela é a São Paulo Tramway Light and Power Company Limited, de origem canadense. Entre as intervenções realizadas, estava a reversão do curso do rio e sua retificação, de maneira a permitir a drenagem das áreas inundáveis e sua urbanização, antes preterida.
+	
+	\subsubsection{Intervenções minoritárias} \label{s3:minoritariaspinheiros}
+	
+	\subsubsection{O papel da Cia. City} \label{s3:ciacity}
+	
+	Conforme \citeonline[p. 12]{franco2005a}:
+	
+	\begin{citacao}
+		``A Cia Light inaugurou uma nova fase do processo de canalização dos rios e de drenagem das várzeas. Seu projeto não se restringiu apenas à construção da infra-estrutura, mas abrangeu também a urbanização das áreas drenadas, até então alagáveis e portanto preteridas no processo de ocupação urbana. A Light e a Cia. City foram os principais agentes de urbanização da cidade, responsáveis por projetos rigorosos e qualificados, apesar da perversidade dos meios empregados para atingir os seus propósitos. As atividades dessas empresas implicaram no aproveitamento das várzeas por mais um importante segmento econômico, o capital imobiliário, importante setor numa cidade que sempre teve a sua própria produção como uma de suas principais atividades''.
+	\end{citacao}
+	
+	\subsubsection{A construção das vias marginais} \label{s3:construindo}
+	
+	Todas as rodovias implantadas a partir da década de 1940 convergem para as marginais dos rios Pinheiros e Tietê \cite[p. 12]{franco2005a}, sendo a Anchieta a única exceção. Apesar de terem sido fruto de um grande projeto, \citeonline[p. 12]{franco2005a} salienta que essas avenidas ``são até hoje um gargalo do escoamento da produção do Estado e passagem obrigatória dos fluxos das cargas e de passageiros da metrópole''.
+	
+	\subsubsection{O ramal de Jurubatuba (atual Linha 9-Esmeralda)} \label{s3:linha9}
+	
+	A gênese do ramal está na visão do engenheiro Asa White Billings, de origem norte-americana, que ao desenvolver o projeto para a retificação e ocupação das várzeas do Pinheiros, vislumbrou também a necessidade de uma nova ligação sobre trilhos entre São Paulo e a Baixada Santista \cite[p. 61]{franco2005a}. Cabe aqui salientar que ``o contrato entre a SPR e o Governo impedia a construção de outras ferrovias em direção ao mar, mas não legislava a respeito de sistemas alternativos'' \cite[p. 61]{franco2005a}. O vislumbre, entretanto, não se mostrou acertado e o ramal não foi bem sucedido devido à pressão da matriz rodoviária.
+	
+	Há de se considerar que o contexto que levou à construção do antigo ramal de Jurubatuba da finada Estrada de Ferro Sorocabana, inaugurado em 1957 \cite[p.140]{requena2016a} era distinto e São Paulo apresentava outra configuração populacional, além de pouco dinamismo ao longo do Pinheiros. A principal motivação da Sorocabana foi concorrer com a Santos-Jundiaí e oferecer outra ligação para acesso à Baixada Santista e o Porto de Santos, o que, segundo \citeonline[p.140]{requena2016a}, reduzia a viagem em aproximadamente 80 quilômetros para cargas triadas na Barra Funda. Esta motivação, atualmente, nem mesmo dialoga com o atual uso da Linha 9-Esmeralda do Trem Metropolitano da \gls{cptm}, ao que corroboram trechos dos trabalhos de (i) \citeonline[p.127]{monteiro2010a}: ``o sistema ferroviário, por sua vez, instalado nas várzeas dos dois rios nos primeiros anos de industrialização, é aproveitado posteriormente para o transporte metropolitano'' e; (ii) \citeonline[p.209]{franco2005a}: ``antes majoritariamente destinado ao transporte de cargas, a partir da privatização das ferrovias passou a ser definido como infra-estrutura de interesse prioritário para o transporte urbano de passageiros.'' 
+	
+	Apesar do fracasso, o ramal sobreviveu e deu origem à Linha 9-Esmeralda da CPTM: ``o ramal Jurubatuba permaneceu ocioso na sua função secundária de servir a indústria. Por sofrer a concorrência do modal rodoviário, que se intensificou simultaneamente a sua construção, todo o ramal foi perdendo paulatinamente sua importância'' \cite[p.141]{requena2016a}. Pouco mais de uma década depois de seu surgimento, o ramal de Jurubatuba passa então a ser o locus de ações que buscavam dinamizar seu uso:
+	
+	\begin{citacao}
+		``O plano da Fepasa de meados da década de 1970, chamado ``Dinamização da Linha Sul'', consistia em transformar o ramal Jurubatuba num corredor estruturador de alta capacidade de transporte de pessoas, e alimentado pelas linhas de ônibus desviadas das rotas concorrentes para convergirem às estações ferroviárias.'' \cite[p.143]{requena2016a}
+	\end{citacao}
+	
+	\subsection{Rio Tietê} \label{s2:riotiete}
+	
+	\subsubsection{Intervenções minoritárias} \label{s3:minoritariastiete}
+	
+	\subsubsection{A canalização pelo poder público} \label{s3:canalizacaopub}
+	
+	\citeonline[p. 72]{brocaneli2007a}:
+	
+	\begin{citacao}
+		``O sistema sobre trilhos significou uma urbanização concentrada ao longo das vias férreas situadas nas várzeas e planícies fluviais, polarizada no entorno das estações e baseada no modal de transporte coletivo. O sistema sobre rodas, fundamentalmente coletivo no primeiro momento, preponderantemente individual com o passar do tempo, possibilitou uma urbanização extensiva, difusa e de baixa densidade''.
+	\end{citacao}
+	
+	\subsubsection{A construção das vias marginais} \label{s3:marginaltiete}
+	
+	\subsubsection{O Parque Ecológico do Tietê} \label{s3:pet}
+	
+	\subsubsection{O Parque Várzeas do Tietê} \label{s3:pvt}
+	
+	\subsubsection{A Santos-Jundiaí (atual Linha 7-Rubi)} \label{s3:efsj}
+	
+	\subsubsection{A Linha Norte-Sul (atual Linha 1-Azul)} \label{s3:nortesul}
+	
+	% ----------------------------------------------------------
+	% Estabelecendo comparações
+	% ----------------------------------------------------------
+	
+	\section{Estabelecendo comparações} \label{s1:comparando}
+	
+	O artigo partiu da premissa de que é possível implantar uma segunda ligação ferroviária, complementar àquela que existe ao longo do curso do rio Pinheiros, descrita na \autoref{s3:linha9}, ademais, é também premissa de que existem políticas e tores consideráveis, assim sendo, faz-se necessário identificar e registrar uma série de elementos, tais como: as principais diferenças na retificação dos dois rios; o volume de tráfego e de passageiros/hora ao longo das vias marginais, de forma a permitir comparações e; identificar o ganho de capacidade possível caso existisse uma linha metroferroviária similar à 9-Esmeralda acompanhando o rio Tietê, incluindo um mapeamento sobre a densidade de conexões e estações por km$^{2}$.
+	
+	\subsection{Sumarizando as diferenças entre as intervenções nos dois rios} \label{s2:sumarizando}
+	
+	\citeonline[p. 53--54]{franco2005a} aponta que ``as questões sanitárias eram mais pretextos do que motivos, e a questão energética justificava plenamente as obras do Pinheiros, mas não as do Tietê'', além disso, a retificação foi realizada numa única empreitada e o projeto manteve-se coordenado pela equipe do engenheiro Billings, \cite[p. 58]{franco2005a} e encarregado pela São Paulo Tramway Light and Power Company Limited, além disso, a companhia recebeu como compensação o ``direito de desapropriação de todas as terras inundáveis inscritas no limite da maior enchente histórica da qual houvesse registro''\cite[p. 59]{franco2005a}, sendo que a Light se voltou à negociação das terras principalmente para a implantação de empreendimentos residenciais de alto padrão \cite[p. 55]{franco2005a}. No caso do outro rio, o poder público foi o responsável pela obtenção de um ``vasto estoque imobiliário na várzea do Tietê, fator que definiria sua ocupação futura pela diversidade de equipamentos, públicos ou privados, assentados sobre áreas de concessão'' \cite[p. 55]{franco2005a}.
+	
+	Para \cite[p. 55]{franco2005a}, ainda que debate ligado à transformação dos dois rios tivesse caráter técnico, nos bastidores desdobrava-se o verdadeiro conflito, ligado à valorização das terras lindeiras ao traçado retificado:
+	
+	\begin{citacao}
+		``Em princípio, questões relativas às retificações começaram a ser pensadas em termos de um processo de apropriação privada do investimento público. Isto porque as várzeas estavam já apropriadas privadamente, tanto as várzeas do Tietê como as do Pinheiros e porque a questão era a de que, através de uma política de investimentos, se faria aplicações de recursos com fins sociais. Não resta dúvida de que pela retificação se realizariam objetivos sociais tanto visando à produção de energia como pela criação de espaços de circulação em que pese o fato desse processo conter, intrinsecamente, inúmeros interesses privados. Pois, é da natureza de todo o processo capitalista de produção da cidade, quer seja através de investimentos públicos ou privados, que tais investimentos alteram de forma substantiva o valor de cada localidade específica. São alterações que respondem positivamente, no seu preço. Um preço que sintetiza uma renda diferencial gerada por essa intervenção''.
+	\end{citacao}
+	
+	Apesar de \citeonline[p. 160]{brocaneli2007a} destacar que as obras de canalização do rio Tietê tiveram caráter urbanístico predatório e pouco contribuíram para o enaltecimento dos recursos naturais como valores ambientais, prejudicando a identidade e a memória da paisagem ambiental, bem como o acesso ao rio pela população e, ainda que intuitivamente se possa pensar que o mesmo venha a se aplicar às obras de canalização do rio Pinheiros, a seguinte constatação de \citeonline[p.148--149]{monteiro2010a} explora a relação paisagística existente, suscitando uma reflexão sobre a diferença entre as infraestruturas ferroviária e rodoviária:
+	
+	\begin{citacao}
+		``Curiosamente, portanto, ainda que se interponha entre o rio e a cidade como mais um elemento de obstáculo ao acesso direto aos rios, a via férrea da CPTM acaba por levar a população às margens dos rios duma outra maneira, ainda que não seja o Pinheiros o lugar de destino intencionado. As estações de trem, nesse sentido, compostas por um edifício de acesso na malha urbana, uma passarela sobre a via expressa e a plataforma, convertem-se em importantes elementos de acesso às mensagens contidas no sistema marginal''.
+	\end{citacao}
+	
+	Ou seja, ainda que não este artigo não tenha como objetivo principal explorar uma relação paisagística que considere uma transformação das margens do rio Tietê a partir da implantação de uma nova infraestrutura ferroviário, pode vir a contribuir para que outros trabalhos desenvolvam-na.
+	
+	A noção de conveniência sem distinção de renda, melhor compreendida ao observar o que \citeonline[p. 149]{requena2016a} salienta com relação à Linha 9-Esmeralda: ``sua conveniência reside no fato de proporcionar, principalmente ao cidadão de menor renda, meios eficazes de acessar as áreas mais equipadas da cidade para seu uso, independentemente de suas condições financeiras'', trata-se de um atributo inexistente ao longo da Marginal Tietê, na qual o transporte individual motorizado é o principal protagonista como forma de acesso \footnote{Uma reflexão sobre o papel do automóvel em comparação com trens e bondes pode ser conferida em \cite[p. 147--149]{franco2005a}.}.
+	
+	\subsection{Capacidade viária considerando o cenário atual} \label{s2:capacidadeatual}
+	
+	\subsubsection{Tráfego rodoviário} \label{s3:rodoatual}
+	
+	\subsubsection{Tráfego rodoviário coletivo} \label{s3:coletivoatual}
+	
+	\subsubsection{Tráfego metroferroviário} \label{s3:metroatual}
+	
+	\subsection{Capacidade viária considerando o cenário hipotético} \label{s2:capacidadefuturo}
+	
+	\subsubsection{Tráfego rodoviário} \label{s3:rodofuturo}
+	
+	\subsubsection{Tráfego rodoviário coletivo} \label{s3:coletivofuturo}
+	
+	\subsubsection{Tráfego metroferroviário} \label{s3:metrofuturo}
+	
+	\subsection{Densidade de conexões e estações} \label{s2:densidadeconexoes}
+	
+	\subsubsection{Considerando o cenário atual} \label{s3:densidadeatual}
+	
+	\subsubsection{Considerando o cenário hipotético} \label{s3:densidadefuturo}
+	
+	% ---
+	% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+	% ---
+	\bookmarksetup{startatroot}% 
+	% ---
+	
+	% ---
+	% Conclusão
+	% ---
+	\section*{Considerações finais}
+	\addcontentsline{toc}{section}{Considerações finais}
+	
+	Falta escrever.
+	
+	% ----------------------------------------------------------
+	%  ELEMENTOS PÓS-TEXTUAIS
+	% ----------------------------------------------------------
+	\postextual
+	
+	% ----------------------------------------------------------
+	% Referências bibliográficas
+	% ----------------------------------------------------------
+	\bibliography{fontes}
+	
+	% ----------------------------------------------------------
+	% Glossário
+	% ----------------------------------------------------------
+	% Consultar manual da classe abntex2 para orientações sobre o
+	% uso do glossário.
+	\renewcommand{\glossaryname}{Glossário}
+	%\renewcommand{\glossarypreamble}{Esta é a descrição do glossário.\\ \\}
+	\renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}
+		\glsseelist{#2}}
+	
+	% ---
+	% Traduções para o ambiente glossaries
+	% ---
+	\providetranslation{Glossary}{Glossário}
+	\providetranslation{Acronyms}{Siglas}
+	\providetranslation{Notation (glossaries)}{Notação}
+	\providetranslation{Description (glossaries)}{Descrição}
+	\providetranslation{Symbol (glossaries)}{Símbolo}
+	\providetranslation{Page List (glossaries)}{Lista de Páginas}
+	\providetranslation{Symbols (glossaries)}{Símbolos}
+	\providetranslation{Numbers (glossaries)}{Números} 
+	% ---
+	
+	% ---
+	% Imprime o glossário
+	% ---
+	%\cleardoublepage
+	\phantomsection
+	\addcontentsline{toc}{chapter}{\glossaryname}
+	\glossarystyle{index}
+	% \glossarystyle{altlisthypergroup}
+	% \glossarystyle{tree}
+	\printglossaries
+	
+	% ----------------------------------------------------------
+	% Apêndices
+	% ----------------------------------------------------------
+	
+	% ---
+	% Inicia os apêndices
+	% ---
+%	\begin{apendicesenv}
+%		
+%		% ----------------------------------------------------------
+%		\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
+%			ac pretium ante justo a nulla curabitur tristique arcu eu metus}
+%		% ----------------------------------------------------------
+%		\lipsum[55-57]
+%		
+%	\end{apendicesenv}
+	% ---
+	
+	% ----------------------------------------------------------
+	% Anexos
+	% ----------------------------------------------------------
+%	\cftinserthook{toc}{AAA}
+	% ---
+	% Inicia os anexos
+	% ---
+	%\anexos
+%	\begin{anexosenv}
+%		
+%		% ---
+%		\chapter{Cras non urna sed feugiat cum sociis natoque penatibus et magnis dis
+%			parturient montes nascetur ridiculus mus}
+%		% ---
+%		
+%		\lipsum[31]
+%		
+%	\end{anexosenv}
+	
+\end{document}
